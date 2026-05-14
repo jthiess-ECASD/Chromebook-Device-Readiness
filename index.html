@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0047bb" />
+  <title>Chromebook Readiness</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="ECASD.png" type="image/png" />
+  <link rel="apple-touch-icon" href="ECASD.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!--  Welcome  -->
+<section id="view-welcome" class="view active">
+  <div class="welcome-card">
+    <img src="ECASD.png" alt="ECASD" class="welcome-logo" />
+    <h1>Chromebook Readiness Checkup</h1>
+    <p class="muted">Press Begin to start testing this device.</p>
+    <button type="button" id="btn-begin" class="btn btn-primary">Begin</button>
+    <button type="button" id="btn-exit-welcome" class="btn btn-ghost">Exit</button>
+    <p class="footer-note">Eau Claire Area School District IT Department</p>
+  </div>
+</section>
+
+<!--  Dashboard view  -->
+<section id="view-dashboard" class="view">
+  <header class="topbar">
+    <div class="topbar-left">
+      <img src="ECASD.png" alt="ECASD" class="topbar-logo" />
+      <div>
+        <h1>Device Readiness</h1>
+        <p class="muted small" id="device-summary">Loading device info…</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="btn btn-ghost" id="btn-reset">Reset</button>
+      <button class="btn btn-ghost" id="btn-exit-dashboard">Exit</button>
+      <button class="btn btn-primary" id="btn-report">View Report</button>
+    </div>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+    <span id="progress-label" class="muted small">0 of 0 complete</span>
+  </div>
+
+  <main class="grid" id="test-grid"><!--  Handled by JS  --></main>
+</section>
+
+<!--  Test view  -->
+<section id="view-test" class="view">
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="btn btn-ghost" id="btn-dashboard">☰ Dashboard</button>
+      <div>
+        <h1 id="test-title">Test</h1>
+        <p class="muted small" id="test-step">Step 1 of 9</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="btn btn-fail" id="btn-fail">Mark Fail</button>
+      <button class="btn btn-pass" id="btn-pass">Mark Pass</button>
+      <button class="btn btn-primary" id="btn-next">Next →</button>
+    </div>
+  </header>
+  <main id="test-body" class="test-body"><!--  Handled by JS  --></main>
+  <section class="test-comments" id="test-comments" hidden>
+    <label for="test-comments-input" class="comments-label">Comments</label>
+    <textarea
+      id="test-comments-input"
+      class="comments-input"
+      rows="2"
+      placeholder="Optional notes about this test (saved with the report)"
+    ></textarea>
+  </section>
+  <footer class="test-footer">
+    <p id="test-instructions" class="muted"></p>
+  </footer>
+</section>
+
+<!--   Summary  -->
+<section id="view-report" class="view">
+  <header class="topbar">
+    <button class="btn btn-ghost" id="btn-back-from-report">← Back</button>
+    <h1>Readiness Report</h1>
+    <div class="topbar-right">
+      <button class="btn btn-primary" id="btn-finish">Exit</button>
+    </div>
+  </header>
+  <main class="report" id="report-body"><!--  Handled by JS  --></main>
+</section>
+
+<!--  Floating technician badge (visible only when logged in)  -->
+<div id="tech-badge" class="tech-badge" hidden>
+  <span>Tech: <strong id="tech-name"></strong></span>
+  <button type="button" id="tech-logout">Log out</button>
+</div>
+
+<!--  Technician login modal (Ctrl+Shift+L)  -->
+<div id="tech-modal" class="modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="tech-modal-title">
+    <h2 id="tech-modal-title">Technician Login</h2>
+    <p class="muted small">Sign in to attach your username to analytics reports.</p>
+    <form id="tech-form" autocomplete="off">
+      <input
+        id="tech-username"
+        type="text"
+        placeholder="Username"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        required
+      />
+      <input
+        id="tech-password"
+        type="password"
+        placeholder="Shared password"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        required
+      />
+      <p id="tech-error" class="error" hidden></p>
+      <div class="modal-actions">
+        <button type="button" id="tech-cancel" class="btn btn-ghost">Cancel</button>
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
