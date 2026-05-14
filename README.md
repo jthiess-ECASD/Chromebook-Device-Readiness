@@ -3,15 +3,15 @@
 A guided hardware-test PWA for Chromebook deployment, intended to live in the
 login-screen waffle menu of apps. Walks a technician through:
 
-- 🎙️ Microphone (record + playback with live waveform)
-- 🔊 Speaker (left / right / both / sweep)
-- 📷 Camera (live preview)
-- 👆 Touchscreen (drag-fill grid, multi-touch aware)
-- 🖱️ Touchpad (movement, click, right-click, two-finger scroll)
-- ⌨️ Keyboard (every key lights up when pressed)
-- 🔋 Battery (live charge level + charging status)
-- 🎧 Headphone jack (stereo tone test)
-- 🔍 Physical inspection (hinge, chassis, keycaps, etc.)
+- Microphone (record + playback with live waveform)
+- Speaker (left / right / both / sweep)
+- Camera (live preview)
+- Touchscreen (drag-fill grid, multi-touch aware)
+- Touchpad (movement, click, right-click, two-finger scroll)
+-  Keyboard (every key lights up when pressed)
+- Battery (live charge level + charging status)
+- Headphone jack (stereo tone test)
+- Physical inspection (hinge, chassis, keycaps, etc.)
 
 ## Setup
 
@@ -60,17 +60,6 @@ In Google Admin Console:
 4. Under app settings, enable "Show on sign-in screen" if it appears in your
    console — this is what surfaces it in the waffle menu before login.
 
-## Testing locally
-
-You need a local HTTPS or localhost server. Easiest:
-
-```sh
-cd "Chromebook Device Readiness"
-python3 -m http.server 8080
-```
-
-Then open `http://localhost:8080`. Mic / camera / battery APIs all work on
-localhost without a cert.
 
 ## Results
 
